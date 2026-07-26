@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ludo Classic - Premium Edition</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Header Controls & Player Info -->
+        <header id="ui-header">
+            <button id="btn-pause" class="icon-btn" aria-label="Pause Game">⏸️</button>
+            <div id="game-title">LUDO CLASSIC</div>
+            <button id="btn-sound" class="icon-btn" aria-label="Toggle Sound">🔊</button>
+        </header>
+
+        <!-- Main Game Viewport with Corner Player Labels -->
+        <main id="canvas-wrapper">
+            <!-- Corner Name Tags -->
+            <div id="label-red" class="player-label label-red hidden">Red</div>
+            <div id="label-green" class="player-label label-green hidden">Green</div>
+            <div id="label-yellow" class="player-label label-yellow hidden">Yellow</div>
+            <div id="label-blue" class="player-label label-blue hidden">Blue</div>
+
+            <canvas id="ludoCanvas"></canvas>
+        </main>
+
+        <!-- Footer Control Area -->
+        <footer id="ui-footer">
+            <div id="current-turn-indicator" class="turn-banner red-turn">
+                <span id="turn-text">Red's Turn - Roll Dice!</span>
+            </div>
+
+            <div id="dice-container" class="dice-wrapper">
+                <div id="dice" class="dice-face show-1">
+                    <div class="dot dot-1"></div>
+                    <div class="dot dot-2"></div>
+                    <div class="dot dot-3"></div>
+                    <div class="dot dot-4"></div>
+                    <div class="dot dot-5"></div>
+                    <div class="dot dot-6"></div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MAIN MENU & PROFILE CREATION OVERLAY -->
+        <div id="menu-overlay" class="modal-overlay">
+            <div class="modal-card menu-card">
+                <h1 class="menu-logo">🎲 LUDO 🎲</h1>
+                
+                <!-- Profile Name Setup Section -->
+                <div class="profile-setup">
+                    <label for="player-name-input" class="input-label">Enter Your Name:</label>
+                    <input type="text" id="player-name-input" class="name-input" placeholder="Your Name (e.g. Govind)" maxlength="12">
+                </div>
+
+                <p class="menu-subtitle">Select Game Mode</p>
+                
+                <div class="mode-buttons">
+                    <button class="mode-btn" data-players="2">
+                        <span class="mode-icon">👥</span>
+                        <span class="mode-text">2 Players (Vs Opponent)</span>
+                    </button>
+                    <button class="mode-btn" data-players="3">
+                        <span class="mode-icon">👨‍👦‍👦</span>
+                        <span class="mode-text">3 Players</span>
+                    </button>
+                    <button class="mode-btn" data-players="4">
+                        <span class="mode-icon">👨‍👩‍👧‍👦</span>
+                        <span class="mode-text">4 Players</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Victory Modal Overlay -->
+        <div id="victory-overlay" class="modal-overlay hidden">
+            <div class="modal-card">
+                <div class="trophy-icon">🏆</div>
+                <h2 id="winner-title">VICTORY!</h2>
+                <p id="winner-subtitle">Player Red Won The Match!</p>
+                <button id="btn-restart" class="action-btn">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils/Helpers.js"></script>
+    <script src="js/engine/CanvasRenderer.js"></script>
+    <script src="js/engine/AudioEngine.js"></script>
+    <script src="js/game/Board.js"></script>
+    <script src="js/game/Token.js"></script>
+    <script src="js/game/Dice.js"></script>
+    <script src="js/game/GameState.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
